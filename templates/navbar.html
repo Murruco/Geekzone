@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+
+    <!--boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <!--Custom css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-main">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="LOGO" class="nav-brand">
+            <ul class="nav-menu">
+                <li>
+                    <a href="#">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Games</a>
+                </li>
+                <li>
+                    <a href="#">Anime</a>
+                </li>
+                <li>
+                    <a href="#">Comics</a>
+                </li>
+                <li>
+                    <a href="#">Series</a>
+                </li>
+                <li>
+                    <a href="#">Tops</a>
+                </li>
+            </ul>
+            <ul class="nav-menu-right">
+                <li>
+                  <input class="search-txt" type="text" name="" placeholder="Buscar en GeekZone">
+                    <a  class="search-btn" href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a class="btn btn-outline-success" href="{{ url_for('login') }}" role="button">Iniciar sesión</a>
+                    <a class="btn btn-outline-success" href="{{ url_for('signup') }}" role="button">Registrarse</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    {% block content %} {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

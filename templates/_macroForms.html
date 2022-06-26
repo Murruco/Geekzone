@@ -1,0 +1,8 @@
+{% macro renderField(field) %}
+    <td> {{ field.label(class="form-txt")}}
+    <dd> {{ field(**kwargs)|safe }}
+{% endmacro %}
+
+{% macro renderFieldNL(field) %}
+    <dd> {{ field(**kwargs)|safe }}
+{% endmacro %}
