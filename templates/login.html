@@ -45,26 +45,30 @@
 
   <div class="container pt-sm-3">
     <form class="form" action="" method="post" novalidate>
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
       <div class="pt-lg-3">
         <div class="form-group">
             {{ renderField(form.email, class="form-control", placeholder="geekzone@gmail.com") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="form-group">
             {{ renderField(form.password, class="form-control", placeholder="*********") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="checkbox">
           <label class="form-txt">
             {{ renderFieldNL(form.remember) }} Recuérdame
           </label>
         </div>
       </div>
-      <div class="pt-lg-3">
+        {{ form.honeypot }}
+      <div class="">
         <div class="d-grid gap-2 col-6 mx-auto center">
-            {{ renderFieldNL(form.submit, class="btn btn-outline-success", value="Iniciar sesión") }}
+            {{ renderFieldNL(form.login, class="btn btn-outline-success", value="Iniciar sesión") }}
         </div>
       </div>
       <div class="pt-lg-3 center">

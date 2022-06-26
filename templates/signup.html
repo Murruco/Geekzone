@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    {% from "_macroForms.html" import renderField, renderFieldNL %}
+
   <div class="container">
     <div class="center">
       <div class="pt-lg-4">
@@ -27,45 +29,44 @@
   </div>
 
   <div class="container pt-sm-3">
-    <form class="form" action="password_reset.php" method="post">
-      <div class="pt-lg-3">
+    <form class="form" action="" method="post" novalidate>
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+      <div class="">
         <div class="form-group">
-          <label for="email" class="form-txt">Correo electrónico</label>
-          <input type="email" name="correo" class="form-control" placeholder="geekzone@gmail.com" id="email">
+            {{ renderField(form.email, class="form-control", placeholder="geekzone@gmail.com") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="form-group">
-          <label for="user" class="form-txt">Usuario</label>
-          <input type="text" name="user" class="form-control" placeholder="Murruco" id="user">
+            {{ renderField(form.username, class="form-control", placeholder="Murruco") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="form-group">
-          <label for="password" class="form-txt">Contraseña</label>
-          <input type="password" name="password" class="form-control" placeholder="*******" id="password">
+            {{ renderField(form.password, class="form-control", placeholder="*********") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="form-group">
-          <label for="cpassword" class="form-txt">Confirmar contraseña</label>
-          <input type="password" name="cpassword" class="form-control" placeholder="*******" id="cpassword">
+            {{ renderField(form.confirm_password, class="form-control", placeholder="********") }}
         </div>
       </div>
-      <div class="pt-lg-3">
+      <div class="">
         <div class="form-group">
-          <label for="fecha" class="form-txt">Fecha nacimiento</label>
-          <input type="date" name="fecha" class="form-control" placeholder="" id="fecha">
+          {{ renderField(form.fecha_nacimiento, class="form-control") }}
         </div>
       </div>
-      <div class="pt-lg-3">
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button type="submit" class="btn btn-outline-success">Restaurar contraseña</button>
+        {{ form.honeypot }}
+      <div class="pt-lg-1 center">
+        <div class="d-grid gap-2 col-6 mx-auto center">
+          {{ renderFieldNL(form.signup, class="btn btn-outline-success") }}
         </div>
       </div>
       <div class="pt-lg-1 center">
-        <div class="form-group">
-          <a href="index.html" class="form-txt">¿Ya tienes una cuenta?</a>
+        <div class="form-group pb-lg-5">
+          <a href="{{ url_for('login') }}" class="form-txt">¿Ya tienes una cuenta?</a>
         </div>
       </div>
     </form>

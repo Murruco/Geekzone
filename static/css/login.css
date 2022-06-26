@@ -26,6 +26,11 @@ body{
   font-size: 18px;
 }
 
+.form-txt2{
+  color: green;
+  font-size: 14px;
+}
+
 .logo{
   width: 100px;
   height: 100px;
