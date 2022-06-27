@@ -1,6 +1,6 @@
 #from flask_sqlalchemy import SQLAlchemy
 import datetime
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.schema import ForeignKey
 
@@ -17,6 +17,6 @@ class Usuario(Base):
     correo = Column(String(100))
     user = Column(String(25))
     password = Column(String(66))
-    fechaNacimiento = Column(DateTime)
-    fechaIngreso = Column(DateTime, default=datetime.datetime.now)
+    fechaNacimiento = Column(Date)
+    fechaIngreso = Column(Date, default=datetime.datetime.now)
     foto = Column(Integer)
