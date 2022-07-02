@@ -1,0 +1,8 @@
+
+hpython:S11921"KDefine a constant instead of duplicating this literal 'index.html' 3 times.(ú†Á¢şÿÿÿÿ
+dpython:S2208"GImport only needed names or import the module and then use its members.(£¶õÿÿÿÿÿ
+_python:S2208"GImport only needed names or import the module and then use its members.(Òí
+Rpython:S1481@".Remove the unused local variable "usersesion".(İê…ùÿÿÿÿ8Œãõñ›0
+Rpython:S1481M".Remove the unused local variable "usersesion".(˜§Ñãüÿÿÿÿ8³¿öñ›0
+Rpython:S1481[".Remove the unused local variable "usersesion".(İê…ùÿÿÿÿ8ğ‚÷ñ›0
+Epython:S1481”",Remove the unused local variable "per_page".(Ûäöë

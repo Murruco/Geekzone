@@ -69,3 +69,8 @@ class FrmNewPost(Form):
     def __init__(self, *args, **kwargs):
         super(FrmNewPost, self).__init__(*args, **kwargs)
         self.category.choices = [(c.id_categoria, c.nombre) for c in Categoria.query.all()]
+
+
+class FrmSearch(Form):
+    search = StringField('Buscar', validators=[DataRequired(message="Escribe una palabra para buscar")])
+    submit = SubmitField('Buscar')

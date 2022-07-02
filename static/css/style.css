@@ -28,27 +28,32 @@ ul {
 .nav-main {
     margin-top: 1%;
     font-size: 17px;
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
     align-items: center;
     height: 60px;
     padding: 20px 0;
+    width: 100%;
 }
 
 .nav-brand {
     width: 50px;
+    justify-content: center;
+    margin-top: -10px;
 }
 
-
-.nav-main ul{
-    display: flex;
-}
 .nav-main ul li{
     padding: 10px;
+    display: inline-block;
+}
+
+.nav-main ul li.noPD{
+    padding: 3px;
+    display: inline-block;
 }
 
 .nav-main ul li a {
-
+    display: inline-block;
 }
 .nav-main ul li a:hover {
     color: #44d62c;
@@ -56,8 +61,8 @@ ul {
 }
 
 .nav-main ul.nav-menu {
-    flex: 1;
-    margin-left: 20px;
+    display: inline-block;
+
 }
 
 .dark{
@@ -66,9 +71,16 @@ ul {
 
 .new-post{
     float: right;
-
 }
 
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.form{
+    display: inline-block;
+}
     /* SHOCASE */
 
 

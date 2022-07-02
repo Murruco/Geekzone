@@ -17,8 +17,12 @@
 
 </head>
 <body>
-    <div class="container">
-        <nav class="nav-main">
+
+    {% from "_macroForms.html" import renderField, renderFieldNL %}
+
+    {% if usersesion == False %}
+        <div class="container-xxl">
+        <nav class="nav-main center ms-3">
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="LOGO" class="nav-brand">
             <ul class="nav-menu">
                 <li>
@@ -39,19 +43,80 @@
                 <li>
                     <a href="{{ url_for('tecnologia') }}">Tec</a>
                 </li>
-            </ul>
-            <ul class="nav-menu-right">
+                <li class="noPD">
+                    <form class="form" action="" method="post" novalidate>
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+                        <div class="form-group">
+                        {{ renderFieldNL(form.submit, class="btn btn-outline-success") }}
+                        </div>
+                        <div class="form-group">
+                        {{ renderFieldNL(form.search, class="form-control", placeholder="Buscar en GeekZone") }}
+                        </div>
+                    </form>
+                </li>
                 <li>
-                  <input class="search-txt" type="text" name="" placeholder="Buscar en GeekZone">
-                    <a  class="search-btn" href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
                     <a class="btn btn-outline-success" href="{{ url_for('login') }}" role="button">Iniciar sesión</a>
                     <a class="btn btn-outline-success" href="{{ url_for('signup') }}" role="button">Registrarse</a>
                 </li>
             </ul>
+            <ul class="nav-menu new-post">
+
+            </ul>
         </nav>
     </div>
+    {% endif %}
+
+    {% if usersesion == True %}
+        <div class="container-fluid">
+        <nav class="nav-main center">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="LOGO" class="nav-brand">
+            <ul class="nav-menu">
+                <li>
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('games') }}">Juegos</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('anime') }}">Anime</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('comics') }}">Comics</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('series') }}">Series</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('tecnologia') }}">Tec</a>
+                </li>
+                </ul>
+                 <form class="" action="{{ url_for('search') }}" method="post" novalidate>
+                     <ul class="nav-menu">
+                         <li class="noPD">
+                             {{ renderFieldNL(form.search, class="form-control", placeholder="Buscar en GeekZone") }}
+                         </li>
+                         <li class="noPD">
+                            {{ renderFieldNL(form.submit, class="btn btn-outline-success") }}
+                         </li>
+                     </ul>
+                </form>
+
+            <ul class="nav-menu new-post">
+                <li class="nav-item dropdown new-post">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Hola, {{ username }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('profile') }}">Perfil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+                  </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
 
     {% block content %} {% endblock %}
 
