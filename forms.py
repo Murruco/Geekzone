@@ -1,6 +1,7 @@
-from wtforms import Form, PasswordField, SubmitField, BooleanField, EmailField, StringField, DateField
-from wtforms import HiddenField
+from wtforms import Form, PasswordField, SubmitField, BooleanField, EmailField
+from wtforms import HiddenField, StringField, DateField, TextAreaField, SelectField, MultipleFileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from models import *
 
 
 def honeypot_check(form, field):
@@ -9,8 +10,7 @@ def honeypot_check(form, field):
 
 
 class FrmLogin(Form):
-    email = EmailField('Correo electrónico', validators=[DataRequired(message="Escribe un correo electrónico"),
-                                                         Email(message="Escribe un correo electrónico válido")])
+    username = StringField('Usuario', validators=[DataRequired(message="Escribe un usuario")])
     password = PasswordField('Contraseña', validators=[DataRequired(message="Escribe una contraseña")])
     remember = BooleanField()
     login = SubmitField('Iniciar Sesión')
@@ -32,13 +32,17 @@ class FrmSignup(Form):
     signup = SubmitField('Registrarse')
     honeypot = HiddenField('', validators=[honeypot_check])
 
-
-'''
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user:
+    def validate_email(self, field):
+        email = field.data
+        user = Usuario.query.filter_by(correo=email).first()
+        if user is not None:
            raise ValidationError('El correo ya está en uso.')
-'''
+
+    def validate_username(self, field):
+        username = field.data
+        user = Usuario.query.filter_by(user=username).first()
+        if user is not None:
+           raise ValidationError('El usuario ya está en uso.')
 
 
 class FrmPasswordReset(Form):
@@ -51,3 +55,17 @@ class FrmPasswordReset(Form):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError('El correo no existe.')
+
+
+class FrmNewPost(Form):
+    title = StringField('Título', validators=[DataRequired(message="Escribe un título")])
+    topic = StringField('Tema', validators=[DataRequired(message="Escribe un tema")])
+    content = TextAreaField('Contenido', validators=[DataRequired(message="Escribe un contenido")])
+    category = SelectField('Categoría', coerce=int, validators=[DataRequired(message="Selecciona una categoría")])
+    pictures = MultipleFileField('Imágenes')
+    submit = SubmitField('Publicar')
+    honeypot = HiddenField('', validators=[honeypot_check])
+
+    def __init__(self, *args, **kwargs):
+        super(FrmNewPost, self).__init__(*args, **kwargs)
+        self.category.choices = [(c.id_categoria, c.nombre) for c in Categoria.query.all()]

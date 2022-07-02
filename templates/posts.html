@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+            <a class="btn btn-outline-success new-post" href="{{ url_for('new_post') }}" role="button">Nueva publicación</a>
+    </div>
+
+    <div class="container">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="pt-lg-3">
+                    <div class="card w-75 dark">
+                      <div class="card-body">
+                        <h3 class="card-title">{{ post.titulo }}</h3>
+                          <p class="subtitle">{{ post.user }} - {{ date_format(post.fechaPublicacion) }}</p>
+                          <p class="">{{ post.nombre }} - {{ post.topic }} </p>
+                        <p class="card-text">{{ post.content }}</p>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

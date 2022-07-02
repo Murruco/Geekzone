@@ -1,0 +1,82 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: url("/static/img/Fondo.jpg");
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+header{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+ul{
+  list-style: none;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.title{
+  margin-top: 3%;
+  margin-left: 4%;
+  font-size: 40px;
+  color: white;
+}
+
+.img-logo{
+  justify-content: center;
+  float: right;
+  margin-right: 5%;
+  width: 5%;
+  height: 5%;
+}
+
+.main{
+  margin-top: 10%;
+}
+
+.form-txt{
+  color: white;
+  font-size: 22px;
+}
+
+.form-txt2{
+  color: green;
+  font-size: 14px;
+}
+
+.form{
+  width: 100%;
+  height: 100%;
+  background-color: #212121;
+  border-radius: 10px;
+  padding: 20px;
+
+}
+
+.column{
+  float: left;
+}
+
+.all{
+  position: relative;
+  width: 100%;
+}
+
+.column.l{
+    width: 50%;
+    padding-right: 10px;
+}
+
+.column.r{
+    width: 50%;
+    padding-left: 10px;
+}
